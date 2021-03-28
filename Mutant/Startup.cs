@@ -13,6 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mutant.Contracts;
+using Mutant.Services;
 
 namespace Mutant
 {
@@ -33,6 +35,7 @@ namespace Mutant
                 .AddDbContext<ApiContext>((serviceProvider, options) =>
                     options.UseInMemoryDatabase("stats.db"));
             services.AddScoped<ApiContext>();
+            services.AddScoped<IMutantService, MutantService>();
 
             services.AddSwaggerGen(c =>
             {
